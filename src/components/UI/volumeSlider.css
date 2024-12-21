@@ -1,0 +1,11 @@
+.volume-slider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  transition: 0.4s ease;
+}
+
+input {
+  width: 100%;
+}

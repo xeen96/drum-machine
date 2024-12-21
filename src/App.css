@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(44, 44, 44)   
+}
+
+#drum-machine {
+  background-color: grey;
+  display: flex;
+  flex-direction: row;
+  max-width: 800px;
+  width: 760px;
+  height: 340px;
+  border: 8px solid rgb(22, 22, 22);
+  border-radius: 5px;
+  /* box-shadow: 0 0 22px 21px rgba(220, 0, 0, 0.837); */
+
+}
+
