@@ -6,6 +6,7 @@ const DrumPad = ({...props}) => {
 
   const playSound = () => {
     setIsActive(true);
+    setContent(pad);
 
     const audioElement = document.getElementById(keys);
     if (audioElement) {
@@ -23,17 +24,12 @@ const DrumPad = ({...props}) => {
   };
 
   useEffect(() => {
-    // Добавляем слушатель для клавиш
     window.addEventListener("keydown", handleKeyDown);
-    if (isActive) {
-      setContent(pad);
-    }
 
-    // Убираем слушатель при размонтировании
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isActive, pad, setContent]);
+  });
 
   return (
     <div 

@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="container" id="drum-machine">
       <DrumPadContainer padKit={kit} setContent={setContent}/>
-      <ControlPanel kit={kit} setKit={setKit} content={content} setContent={setContent}/>
+      <ControlPanel kit={kit} setKit={setKit} content={content} setContent={setContent} power={power} setPower={setPower}/>
     </div>
   );
 }

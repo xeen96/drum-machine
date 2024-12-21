@@ -21,7 +21,7 @@ const VolumeSlider = ({...props}) => {
       value={volume}/>
     </div>
   )
-  
+
 }
 
 export default VolumeSlider;

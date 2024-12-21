@@ -2,10 +2,11 @@ import React from "react";
 import "./switchButton.css";
 
 const SwitchButton = ({...props }) => {
-  const {kit, setKit} = props;
-  
+  const {kit, setKit, setContent} = props;
+
   const handleClick = () => {
     setKit((prevKit) => (prevKit === "heater" ? "piano" : "heater"));
+    setContent(prev => kit.toUpperCase())
   };
 
   return (

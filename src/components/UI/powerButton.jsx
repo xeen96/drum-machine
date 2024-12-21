@@ -1,23 +1,25 @@
 import React, { useState } from "react";
 import './powerButton.css'
 
-const PowerButton = () => {
-  const [isEnabled, setState] = useState(false);
-  const setPower = () => {
-    setState(!isEnabled);
-  };
+const PowerButton = ({...props}) => {
+  const {power, setPower} = props;
+
+    const handlePower = () => {
+      setPower((prev) => !power);
+    }
+
 
   return (
     <div className="power-button-container"
     >
       <div className="power-button-line-invisible"></div>
       <div className=
-      {`power-button-line-visible ${isEnabled ? 'off' : 'on'}`}>
+      {`power-button-line-visible ${power ? 'off' : 'on'}`}>
 
       </div>
       <div
-        className={`power-button-circle ${isEnabled ? 'off' : 'on'}`}
-        onClick={setPower}
+        className={`power-button-circle ${power ? 'off' : 'on'}`}
+        onClick={handlePower}
         role="button"
       >
 
