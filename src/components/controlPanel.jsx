@@ -6,15 +6,15 @@ import VolumeSlider from './UI/volumeSlider';
 import SwitchButton from './UI/switchButton';
 
 
-const ControlPanel = () => {
-
+const ControlPanel = ({...props}) => {
+ const { kit, setKit, content, setContent } = props;
 
   return (
     <div className='control-panel'>
       <PowerButton/>
-      <Display/>
-      <VolumeSlider/>
-      <SwitchButton/>
+      <Display content={content}/>
+      <VolumeSlider content={content} setContent={setContent}/>
+      <SwitchButton kit={kit} setKit={setKit} content={content} setContent={setContent}/>
     </div>
 
   )

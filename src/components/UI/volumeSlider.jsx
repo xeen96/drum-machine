@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import './volumeSlider.css'
 
-const VolumeSlider = () => {
+const VolumeSlider = ({...props}) => {
+  const {content, setContent} = props;
   const [volume, setVolume] = useState(0.5);
 
   const handleChangeVolume = (e) => {
-    setVolume(e.target.value);
+    setVolume((prevVolume) => e.target.value);
+    setContent((prevContent) => `Volume: ${(e.target.value * 100).toFixed()}`)
   }
 
   return (

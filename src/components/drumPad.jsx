@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react"
 
-const DrumPad = ({ pad, keys, effects }) => {
+const DrumPad = ({...props}) => {
+  const { pad, keys, effects, setContent} = props;
   const [isActive, setIsActive] = useState(false);
 
   const playSound = () => {
@@ -16,7 +17,7 @@ const DrumPad = ({ pad, keys, effects }) => {
   };
 
   const handleKeyDown = (event) => {
-    if (event.key.toUpperCase() === keys) {
+    if (event.code === `Key${keys.toUpperCase()}`) {
       playSound();
     }
   };
@@ -24,13 +25,15 @@ const DrumPad = ({ pad, keys, effects }) => {
   useEffect(() => {
     // Добавляем слушатель для клавиш
     window.addEventListener("keydown", handleKeyDown);
+    if (isActive) {
+      setContent(pad);
+    }
 
     // Убираем слушатель при размонтировании
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
-
+  }, [isActive, pad, setContent]);
 
   return (
     <div 

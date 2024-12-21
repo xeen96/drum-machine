@@ -1,34 +1,26 @@
-import React, { useState } from "react";
-import './switchButton.css'
-const SwitchButton = () => {
-  const [kit, setKit] = useState("heater");
-  const [floatStyle, setFloatStyle] = useState('left')
+import React from "react";
+import "./switchButton.css";
 
-
+const SwitchButton = ({...props }) => {
+  const {kit, setKit} = props;
+  
   const handleClick = () => {
-    setKit(kit =>  kit === "heater" ? "piano" : "heater");
-    setFloatStyle(floatStyle => floatStyle === "left" ? "right" : "left");
-    console.log(floatStyle);
-  }
+    setKit((prevKit) => (prevKit === "heater" ? "piano" : "heater"));
+  };
 
   return (
     <div className="control">
       <p>Bank</p>
       <div className="select">
-
         <div
-        className="inner"
-        role="button"
-        onClick={handleClick}
-        style={{float: floatStyle}}
-        >
-
-        </div>
+          className="inner"
+          role="button"
+          onClick={handleClick}
+          style={{ float: kit === "heater" ? "left" : "right" }}
+        ></div>
       </div>
     </div>
-
-
-  )
-}
+  );
+};
 
 export default SwitchButton;
