@@ -3,11 +3,11 @@ import DrumPad from './drumPad';
 import './padContainer.css'
 import { HEATER_URLS, PIANO_URLS } from '../consts/consts';
 
-const DrumPadContainer = ({...props}) => {
-  const {padKit, setContent} = props
+const DrumPadContainer = ({ ...props }) => {
+  const { padKit, setContent } = props
   const kit =
-  padKit === "heater"
-    ? [
+    padKit === "heater"
+      ? [
         "Heater-1",
         "Heater-2",
         "Heater-3",
@@ -18,7 +18,7 @@ const DrumPadContainer = ({...props}) => {
         "Kick",
         "Closed-HH",
       ]
-    : [
+      : [
         "Chord-1",
         "Chord-2",
         "Chord-3",
@@ -36,7 +36,12 @@ const DrumPadContainer = ({...props}) => {
   return (
     <div className="drum-pad-container">
       {kit.map((pad, index) => (
-        <DrumPad key={index} pad={pad} keys={keys[index]} effects={urls[index]} setContent={setContent}/>
+        <DrumPad
+          key={index}
+          pad={pad}
+          keys={keys[index]}
+          effects={urls[index]}
+          setContent={setContent} />
       ))}
     </div>
   );

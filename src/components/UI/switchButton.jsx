@@ -1,8 +1,8 @@
 import React from "react";
 import "./switchButton.css";
 
-const SwitchButton = ({...props }) => {
-  const {kit, setKit, setContent} = props;
+const SwitchButton = ({ ...props }) => {
+  const { kit, setKit, setContent } = props;
 
   const handleClick = () => {
     setKit((prevKit) => (prevKit === "heater" ? "piano" : "heater"));

@@ -1,7 +1,12 @@
-import React, {useState, useEffect} from "react"
+import React, { useState, useEffect } from "react"
+import { usePower } from "../context/powerContext";
+import { useVolume } from "../context/volumeContext";
 
-const DrumPad = ({...props}) => {
-  const { pad, keys, effects, setContent} = props;
+
+const DrumPad = ({ ...props }) => {
+  const { pad, keys, effects, setContent } = props;
+  const { volume } = useVolume();
+  const { isPoweredOn } = usePower();
   const [isActive, setIsActive] = useState(false);
 
   const playSound = () => {
@@ -10,11 +15,13 @@ const DrumPad = ({...props}) => {
 
     const audioElement = document.getElementById(keys);
     if (audioElement) {
-      audioElement.currentTime = 0; 
-      audioElement.play().catch((err) => console.error("Error playing audio:", err)); 
+      audioElement.currentTime = 0;
+      audioElement.volume = volume;
+      console.log(volume)
+      audioElement.play().catch((err) => console.error("Error playing audio:", err));
     }
 
-    setTimeout(() => setIsActive(false), 200); 
+    setTimeout(() => setIsActive(false), 200);
   };
 
   const handleKeyDown = (event) => {
@@ -32,21 +39,21 @@ const DrumPad = ({...props}) => {
   });
 
   return (
-    <div 
+    <div
       className={`drum-pad ${isActive ? "active" : ""}`}
-      id={pad} 
+      id={pad}
       role="button"
       onClick={playSound}>
-        
-    {keys}
 
-    <audio 
-    className="clip"
-    id={keys}
-    src={effects} 
-    >
+      {keys}
 
-    </audio>
+      <audio
+        className="clip"
+        id={keys}
+        src={!isPoweredOn ? effects : "#"}
+      >
+
+      </audio>
     </div>
   );
 };

@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import './powerButton.css'
+import { usePower } from "../../context/powerContext";
 
-const PowerButton = ({...props}) => {
-  const {power, setPower} = props;
 
-    const handlePower = () => {
-      setPower((prev) => !power);
-    }
+const PowerButton = () => {
+  const { isPoweredOn, setIsPoweredOn } = usePower();
+
+  const handlePower = () => {
+    setIsPoweredOn((isPoweredOn) => !isPoweredOn);
+  }
 
 
   return (
@@ -14,11 +16,11 @@ const PowerButton = ({...props}) => {
     >
       <div className="power-button-line-invisible"></div>
       <div className=
-      {`power-button-line-visible ${power ? 'off' : 'on'}`}>
+        {`power-button-line-visible ${isPoweredOn ? 'off' : 'on'}`}>
 
       </div>
       <div
-        className={`power-button-circle ${power ? 'off' : 'on'}`}
+        className={`power-button-circle ${isPoweredOn ? 'off' : 'on'}`}
         onClick={handlePower}
         role="button"
       >
